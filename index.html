@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <title>SCHU</title>
+</head>
+
+<body>
+    <div id="sidebar">
+        <img src="photo/SCHU_nocolor.jpg" alt="Бот SCHU">
+        <h1>Сайт SCHU</h1>
+        <p> Генератор поз для обучения рисованию.<br><br>
+            Я понимаю, как важны референсы в работе художника. 
+            Благодаря данному ресурсy, вы сможете использовать разнообразные позы людей для своих художественных проектов. 
+            Проект создан для того, чтобы помочь в развитии навыков рисования и творческого потенциала. <br><br>
+            Независимо от вашего уровня — будь вы начинающим художником или опытным профессионалом, сайт станет вашим помощником в творческом процессе. 
+        </p>
+        <a href="https://t.me/schu_aa_bot">Бот, который рад помочь</a>
+        <a href="https://t.me/schu_aa">Обратная связь</a>
+    </div>
+
+    <div id="main">
+        <br>
+        <button class="button" id="getPose">Новая поза</button>
+        <button class="button" id="getFace">Новое лицо</button>
+        <br><br>
+        <img id="photo" src="photo/SCHU_small.jpg" alt="Случайное изображение">
+        
+        <script>
+            button_pose = document.getElementById('getPose');
+            button_pose.addEventListener('click', () => getPhoto('getPose.php'));
+
+            button_face = document.getElementById('getFace');
+            button_face.addEventListener('click', () => getPhoto('getFace.php'));
+
+            img = document.getElementById('photo');
+
+            function getPhoto(file_name) {
+                fetch(file_name)
+                    .then(response => response.text())
+                    .then(photoUrl => {
+                        img.src = photoUrl;
+                    })
+                    .catch(error => console.error('Ошибка!', error));
+            }
+        </script>
+    </div>
+</body>
+</html>
